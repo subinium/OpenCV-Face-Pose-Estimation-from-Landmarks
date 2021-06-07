@@ -1,0 +1,24 @@
+{
+    "image_save": true,
+    "save_path": "./sample",
+    "landmark_path": "./total.csv",
+    "image_dir_path": "input",
+    "offset": {
+        "x": "x",
+        "y": "y",
+        "w": "w",
+        "h": "h"
+    },
+    "landmark": {
+        "landmark_prefix": [
+            "lx_",
+            "ly_"
+        ],
+        "nose_tip": "9",
+        "chin": "1",
+        "left_eye_center": "19",
+        "right_eye_center": "14",
+        "left_mouse_corner": "22",
+        "right_mouse_corner": "20"
+    }
+}
