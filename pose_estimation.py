@@ -99,9 +99,9 @@ if __name__ == '__main__':
         if idx==100:break
         img_info = landmarks.iloc[idx]
         landmark_value = img_info[landmark_col].values
-        if offset_x !=None and offset_y != None:
-            landmark_value[::2] += img_info[offset_x]
-            landmark_value[1::2] += img_info[offset_y]
+        # if offset_x !=None and offset_y != None:
+        #     landmark_value[::2] += img_info[offset_x]
+        #     landmark_value[1::2] += img_info[offset_y]
             
         img_path = img_info[image_dir_path]
         frame = cv2.imread(img_path)
@@ -109,13 +109,15 @@ if __name__ == '__main__':
         if offset_w and offset_h:
             
             center = (img_info[offset_x]+img_info[offset_w]/2, img_info[offset_y]+img_info[offset_h]/2)
-            # pass
+            pass
 
 
         imgpts, modelpts, rotate_degree, nose = face_orientation(frame, landmark_value, center)
         pose_list.append(list(rotate_degree))
 
         if image_save:
+            nose[0] += img_info[offset_x]
+            nose[1] += img_info[offset_y]
             nose = nose.astype(int)
 
             cv2.line(frame, nose, tuple(imgpts[1].flatten().astype(int)), (0,255,0), 3) 
